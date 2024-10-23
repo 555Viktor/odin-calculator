@@ -1,10 +1,10 @@
 * {
     box-sizing: border-box;
+    font-size: 1.2rem;
 }
 
 body {
     min-height: 100vh;
-
     background: hsl(268, 58%, 21%);
 }
 
@@ -16,8 +16,39 @@ body,
     flex-direction: column;
 }
 
+.calc-container {
+    border: 1px solid;
+    padding: 1rem;   
+} 
+
+.calc-display-wrapper {
+    height: 6rem;
+
+    margin-bottom: 1rem;
+}
+
 .calc-buttons {
+    height: 20rem;
+
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
+}
+
+.calc-display-wrapper,
+.calc-buttons {
+    width: 20rem;
+    
+    background: hsl(269, 68%, 14%);
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.calc-buttons .btn-calc {
+    background: hsl(281, 89%, 26%);
+
+    border: none;
+    border-radius: 5px;
+
+    box-shadow: 0px 4px 0px hsl(285, 91%, 52%);
 }
