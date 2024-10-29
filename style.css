@@ -12,7 +12,11 @@ body {
 
     min-height: 100vh;
     background: hsl(269, 54%, 27%);
+
+    overflow: hidden;
 }
+
+
 
 /* Flex layout */
 body,
@@ -117,7 +121,7 @@ body,
 }
 
 .calc-buttons .btn-operation:focus {
-    background: hsl(285, 65%, 38%);
+    background: hsl(285, 65%, 31%);
 }
 
 /* Footer styling */
