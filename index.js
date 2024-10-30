@@ -21,7 +21,6 @@ let result = ''; // result after calculation() is invoked with proper parameters
 
 // Perform calculation
 function calculate (currNum, prevNum, op) {
-
     try {
         let curr = parseFloat(currNum);
         let prev = parseFloat(prevNum);
@@ -35,14 +34,14 @@ function calculate (currNum, prevNum, op) {
                 return curr + prev;
     
             case '-':
-                return curr - prev;
+                return prev - curr;
                 
             case '*':
                 return curr * prev;
     
             case '/':
                 if (prev === 0) throw new Error('Cannot divide by zero')
-                return curr / prev;
+                return prev / curr;
     
             default:
                 throw new Error('Please enter a valid operator')
@@ -51,7 +50,6 @@ function calculate (currNum, prevNum, op) {
         console.log(error.message)
         return null;
     }
-
 }
 
 // Append function argument to display 
@@ -100,7 +98,7 @@ operationBtns.forEach(operBtn => {
             operator = operBtn.textContent;
     
             isOperatorUsed = true;
-            isDecimalUsed = false; //If we've used an operator, then a new number is being input and no decimal used
+            isDecimalUsed = false; // If we've used an operator, then a new number is being input and no decimal used
         } catch (error) {
             console.log(error.message)
             currentNum = previousNum = operator = result = ''; // Reset after error
