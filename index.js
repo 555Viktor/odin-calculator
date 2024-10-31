@@ -2,6 +2,7 @@
 const calcDisplayContainer = document.querySelector('.calc-display-wrapper')
 const calcDisplay = document.querySelector('.calc-display');
 
+const calcBtnsContainer = document.querySelector('.calc-buttons');
 const numBtns = document.querySelectorAll('.btn-num'); // All number buttons
 const operationBtns = document.querySelectorAll('.btn-operation'); // All operation buttons
 
@@ -17,7 +18,6 @@ let currentNum = ''; // current number input
 let previousNum = ''; // last number value before an operator is clicked
 let operator = ''; // operator in use
 let result = ''; // result after calculation() is invoked with proper parameters
-
 
 // Perform calculation
 function calculate (currNum, prevNum, op) {
@@ -40,7 +40,10 @@ function calculate (currNum, prevNum, op) {
                 return curr * prev;
     
             case '/':
-                if (prev === 0) throw new Error('Cannot divide by zero')
+                if (curr === 0 || prev === 0) {
+                    updateDisplay('Nope');
+                    throw new Error('Cannot divide by zero');
+                }
                 return prev / curr;
     
             default:
@@ -57,54 +60,62 @@ function updateDisplay (val) {
     calcDisplay.textContent = val;
 }
 
-// Number input functionality for each numBtn from node list
-numBtns.forEach(numBtn => {
-    numBtn.addEventListener('click', () => {
-        if (
-            currentNum.length >! 1 // If current num is no more than 1 digit
-            && currentNum == 0 // Current display number is 0
-            && !isDecimalUsed // No decimal used
-        ) {
-            return; // Prevent adding multiple numbers after 0 with no decimal
-        } 
-        
-        //  Manage value of currentNum depending if user has used an operator
-        if (isOperatorUsed) {
-            currentNum = numBtn.textContent;
-            isOperatorUsed = false;
+function handleNumericInput (numBtn) {
+    if (
+        currentNum.length >! 1 // If current num is no more than 1 digit
+        && currentNum == 0 // Current display number is 0
+        && !isDecimalUsed // No decimal used
+    ) {
+        return; // Prevent adding multiple numbers after 0 with no decimal
+    } 
+    
+    //  Manage value of currentNum depending if user has used an operator
+    if (isOperatorUsed) {
+        currentNum = numBtn.textContent;
+        isOperatorUsed = false;
+    } else {
+        currentNum += numBtn.textContent;
+    }
+}
+
+function handleOperators (operBtn) {
+    try {
+        if (currentNum === '') return;
+
+        if (previousNum !== '' && operator) {
+            result = calculate(currentNum, previousNum, operator);
+            updateDisplay(result);
+            previousNum = result;
         } else {
-            currentNum += numBtn.textContent;
+            previousNum = parseFloat(currentNum);
         }
 
+        operator = operBtn.textContent;
+
+        isOperatorUsed = true;
+        isDecimalUsed = false; // If we've used an operator, then a new number is being input and no decimal used
+    } catch (error) {
+        console.log(error.message)
+        currentNum = previousNum = operator = result = ''; // Reset after error
+    } 
+}
+
+calcBtnsContainer.addEventListener('click', (event) => {
+    let btnTarget = event.target;
+
+    if (btnTarget.tagName !== 'BUTTON') return;
+
+    if (btnTarget.classList.contains('btn-num')) {
+        handleNumericInput(btnTarget);
         updateDisplay(currentNum);
-    })
+    }
+
+    if (btnTarget.classList.contains('btn-operation')) {
+        handleOperators(btnTarget);
+    }
+
 })
 
-
-// Operation functionality
-operationBtns.forEach(operBtn => {
-    operBtn.addEventListener('click', () => {
-        try {
-            if (currentNum === '') return;
-
-            if (previousNum !== '' && operator) {
-                result = calculate(currentNum, previousNum, operator);
-                updateDisplay(result);
-                previousNum = result;
-            } else {
-                previousNum = parseFloat(currentNum);
-            }
-    
-            operator = operBtn.textContent;
-    
-            isOperatorUsed = true;
-            isDecimalUsed = false; // If we've used an operator, then a new number is being input and no decimal used
-        } catch (error) {
-            console.log(error.message)
-            currentNum = previousNum = operator = result = ''; // Reset after error
-        }
-    })
-})
 
 btnEquals.addEventListener('click', () => {
     if (currentNum === '' || previousNum === '' || operator === '') return;
@@ -143,3 +154,5 @@ btnDecimal.addEventListener('click', () => {
         updateDisplay(currentNum);
     } 
 })
+
+
