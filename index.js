@@ -1,4 +1,4 @@
-// DOM Els
+// DOM els
 const calcDisplayContainer = document.querySelector('.calc-display-wrapper')
 const calcDisplay = document.querySelector('.calc-display');
 
@@ -11,15 +11,17 @@ const btnEquals = document.querySelector('.btn-equals');
 const btnDelete = document.querySelector('.btn-del');
 const btnClear = document.querySelector('.btn-clear');
 
+// State and value storage variables
 let isDecimalUsed = false;
 let isOperatorUsed = false;
 
-let currentNum = ''; // current number input
-let previousNum = ''; // last number value before an operator is clicked
-let operator = ''; // operator in use
-let result = ''; // result after calculation() is invoked with proper parameters
+let currentNum = ''; 
+let previousNum = ''; 
+let operator = '';
+let result = ''; 
 
-// Perform calculation
+// Calculate and return result based on number and operator input
+// Throws error for invalid inputs (non-numeric or division by zero)
 function calculate (currNum, prevNum, op) {
     try {
         let curr = parseFloat(currNum);
@@ -60,16 +62,18 @@ function updateDisplay (val) {
     calcDisplay.textContent = val;
 }
 
+// Function to handle numeric input based on value of button clicked
+// Prevent adding numbers after 0 with no decimal 
+// If operator is used, start a new number
 function handleNumericInput (numBtn) {
     if (
-        currentNum.length >! 1 // If current num is no more than 1 digit
-        && currentNum == 0 // Current display number is 0
-        && !isDecimalUsed // No decimal used
+        currentNum.length === 1
+        && currentNum == 0
+        && !isDecimalUsed
     ) {
-        return; // Prevent adding multiple numbers after 0 with no decimal
+        return;
     } 
-    
-    //  Manage value of currentNum depending if user has used an operator
+
     if (isOperatorUsed) {
         currentNum = numBtn.textContent;
         isOperatorUsed = false;
@@ -78,6 +82,8 @@ function handleNumericInput (numBtn) {
     }
 }
 
+// Function to handle operator input based on value of button clicked
+// Prevent using operators without numeric input
 function handleOperators (operBtn) {
     try {
         if (currentNum === '') return;
@@ -100,6 +106,8 @@ function handleOperators (operBtn) {
     } 
 }
 
+// Event delegation for buttons container
+// Perform appropriate handle function based on class of button clicked 
 calcBtnsContainer.addEventListener('click', (event) => {
     let btnTarget = event.target;
 
@@ -116,11 +124,11 @@ calcBtnsContainer.addEventListener('click', (event) => {
 
 })
 
-
+// Calculate and display final result on button click
 btnEquals.addEventListener('click', () => {
     if (currentNum === '' || previousNum === '' || operator === '') return;
 
-    result = calculate(currentNum, previousNum, operator)
+    result = calculate(currentNum, previousNum, operator);
     updateDisplay(result);
 
     previousNum = ''; 
@@ -128,7 +136,7 @@ btnEquals.addEventListener('click', () => {
 })
 
 btnDelete.addEventListener('click', () => {
-    // Reset bool if decimal has been deleted from current input
+    // Reset boolean if decimal point has been deleted
     if (currentNum[currentNum.length - 1] === '.') {
         isDecimalUsed = false;
     }
@@ -145,7 +153,7 @@ btnClear.addEventListener('click', () => {
     updateDisplay(currentNum) // Update display to be empty
 })
 
-
+// Add decimal point based on boolean and valid number value
 btnDecimal.addEventListener('click', () => {
     if (!isDecimalUsed && currentNum !== '') {
         currentNum += '.'; 
