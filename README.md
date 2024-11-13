@@ -52,3 +52,5 @@ To get started with this project locally:
 
 ## Acknowledgements  
 This project was built as an assigment from **TOP**'s curriculum. A big thank you to **The Odin Project** for this exercise.
+
+![Screenshot](images/github-calculator-preview.png)
