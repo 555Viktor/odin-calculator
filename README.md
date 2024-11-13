@@ -1,7 +1,7 @@
 # Calculator App 🧮
 
 ## Live Preview  
-Check out the deployed project here: 
+Check out the deployed project here: https://555viktor.github.io/odin-calculator/
 
 ## Project Overview  
 This is a web-based **Calculator App** built using **HTML**, **CSS**, and **JavaScript**. The app features a clean, user-friendly interface and allows users to perform basic mathematical operations. The project was developed as an assignment for **The Odin Project**.
