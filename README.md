@@ -1,6 +1,6 @@
 # Calculator App 🧮
 
-![Screenshot](images/github-calculator-preview.png)
+[![Screenshot](images/github-calculator-preview.png)](https://555viktor.github.io/odin-calculator/)
 
 ## Live Preview  
 Check out the deployed project here: https://555viktor.github.io/odin-calculator/
