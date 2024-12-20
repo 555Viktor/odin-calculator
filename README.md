@@ -1,9 +1,9 @@
 # Calculator App 🧮
 
-[![Screenshot](images/github-calculator-preview.png)](https://555viktor.github.io/odin-calculator/) or click the image.
+[![Screenshot](images/github-calculator-preview.png)](https://555viktor.github.io/odin-calculator/)
 
 ## Live Preview  
-Check out the deployed project here: https://555viktor.github.io/odin-calculator/
+Check out the deployed project here: https://555viktor.github.io/odin-calculator/  or click the image.
 
 ## Project Overview  
 This is a web-based **Calculator App** built using **HTML**, **CSS**, and **JavaScript**. The app features a clean, user-friendly interface and allows users to perform basic mathematical operations. The project was developed as an assignment for **The Odin Project**.
