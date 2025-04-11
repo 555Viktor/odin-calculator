@@ -3,7 +3,7 @@
 [![Screenshot](src/assets/weather-app-preview.jpg)](https://555viktor.github.io/weather-app/)
 
 ## Live Preview  
-Check out the deployed project here: [https://555viktor.github.io/weather-app/https://555viktor.github.io/weather-app/](https://555viktor.github.io/weather-app/) or click the image.
+Check out the deployed project here: [https://555viktor.github.io/weather-app/https://555viktor.github.io/weather-app/] or click the image.
 
 ## Project Overview  
 This is a web-based **Weather App** built using **HTML**, **CSS**, **JavaScript**, and **Webpack**. The app provides users with real-time weather data including today's forecast, hourly forecast, 5-day forecast, wind speed, pressure, UV light levels, and humidity. This project was developed as part of **The Odin Project's** curriculum.
