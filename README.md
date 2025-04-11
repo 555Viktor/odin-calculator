@@ -1,56 +1,63 @@
-# Calculator App 🧮
+# Weather App 🌤️
 
-[![Screenshot](images/github-calculator-preview.png)](https://555viktor.github.io/odin-calculator/)
+[![Screenshot](src/assets/weather-app-preview.jpg)](https://555viktor.github.io/weather-app/)
 
 ## Live Preview  
-Check out the deployed project here: https://555viktor.github.io/odin-calculator/  or click the image.
+Check out the deployed project here: [https://555viktor.github.io/weather-app/https://555viktor.github.io/weather-app/](https://555viktor.github.io/weather-app/) or click the image.
 
 ## Project Overview  
-This is a web-based **Calculator App** built using **HTML**, **CSS**, and **JavaScript**. The app features a clean, user-friendly interface and allows users to perform basic mathematical operations. The project was developed as an assignment for **The Odin Project**.
+This is a web-based **Weather App** built using **HTML**, **CSS**, **JavaScript**, and **Webpack**. The app provides users with real-time weather data including today's forecast, hourly forecast, 5-day forecast, wind speed, pressure, UV light levels, and humidity. This project was developed as part of **The Odin Project's** curriculum.
 
 ## Features  
-This calculator includes the following features:
-
-- **Basic Arithmetic Operations:** Perform addition (+), subtraction (-), multiplication (*), and division (/).
-- **Clear Button:** Reset the current input with a single click.
-- **DEL:** Remove the last entered digit for corrections.
-- **Responsive Layout:** The app adjusts to different screen sizes for a seamless experience on both mobile and desktop.
-- **Real-time Display:** See calculations and results instantly as you input numbers and operators.
+This weather app includes the following features:
+- **Search by City:** Enter any city name to retrieve weather data.
+- **Today's Forecast:** Displays the current weather conditions, temperature, and more.
+- **Hourly Forecast:** Shows hourly weather predictions for the upcoming hours.
+- **5-Day Forecast:** Displays weather predictions for the next 5 days.
+- **Wind Speed & Pressure:** View the current wind speed and atmospheric pressure.
+- **UV Light & Humidity:** Get real-time data on UV light levels and humidity.
 
 ## Technologies Used  
-- **HTML** – To structure the page and layout.
-- **CSS** – For styling and making the interface responsive.
-- **JavaScript** – To handle the logic behind the calculator's operations and user interactions.
+- **HTML** – For the structure and layout of the app.
+- **CSS** – For styling the app.
+- **JavaScript** – To fetch and display real-time weather data using a weather API.
+- **Webpack** – For bundling and optimizing JavaScript, CSS, and other assets, ensuring better performance.
+- **VirtualCrossing API** – To retrieve live weather data based on user input.
+- **API Handling** – Uses JavaScript to interact with the weather API and display data dynamically.
 
 ## Installation  
 To get started with this project locally:
 
 1. Clone the repository to your machine:
    ```bash
-   git clone https://github.com/555Viktor/odin-calculator.git
+   git clone https://github.com/555Viktor/weather-app.git
    ```
 
 2. Navigate into the project folder:
    ```bash
-   cd odin-calculator
+   cd weather-app
    ```
 
-3. Open `index.html` in your preferred browser to start using the calculator!
+3. Install the required dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Run the Webpack development server to start the app locally:
+   ```bash
+   npm run start
+   ```
+
+5. Open `localhost:8080` in your preferred browser to start using the weather app!
 
 ## Usage  
 
-1. **Perform Calculations:**  
-   - Click on the number buttons (0-9) to enter digits.  
-   - Use the operator buttons (+, -, *, /) to perform arithmetic operations.
-   - Arithmetic operations are performed automatically
-   - Press the **`=`** button to calculate and display the final result.
+1. **View Weather Data:**  
+   - Enter a city name in the search bar to see the weather data for that location.  
+   - View the current temperature, hourly forecast, 5-day forecast, wind speed, pressure, UV light levels, and humidity.
 
-2. **Clear and Edit Inputs:**  
-   - Use the **Clear** button to reset the current calculation.  
-   - Press the **DEL** button to remove the last entered digit or operator.
-
-3. **Responsive Design:**  
-   - The calculator is designed to adjust seamlessly to various screen sizes, providing an optimal experience on both mobile and desktop devices.
+2. **Real-Time Updates:**  
+   - The app fetches live weather data from an API, so the weather information is always up-to-date.
 
 ## Acknowledgements  
-This project was built as an assigment from **TOP**'s curriculum. A big thank you to **The Odin Project** for this exercise.
+This project was developed as part of **The Odin Project's** curriculum to help improve my skills in front-end development, API handling, and using build tools like **Webpack**. A special thanks to **VirtualCrossing** for providing the weather data API.
